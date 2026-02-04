@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
+
+@layer base {
+  :root {
+    /* Carset Premium Dark Theme */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 72% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 72% 51%;
+
+    --radius: 0.5rem;
+
+    /* Custom Carset Variables */
+    --carset-red: 0 72% 51%;
+    --carset-red-glow: 0 72% 45%;
+    --carset-dark: 0 0% 4%;
+    --carset-dark-secondary: 0 0% 8%;
+    --carset-gray: 0 0% 14%;
+    --carset-gray-light: 0 0% 22%;
+    --carset-leather: 30 15% 12%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 10%) 0%, hsl(0 0% 6%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(0 72% 51%) 0%, hsl(0 72% 40%) 100%);
+    --gradient-leather: linear-gradient(145deg, hsl(30 15% 14%) 0%, hsl(30 12% 8%) 100%);
+    
+    /* Shadows */
+    --shadow-card: 0 4px 24px -4px hsla(0, 0%, 0%, 0.5);
+    --shadow-elevated: 0 12px 40px -8px hsla(0, 0%, 0%, 0.7);
+    --shadow-glow: 0 0 40px -10px hsla(0, 72%, 51%, 0.3);
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 0 72% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .carset-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .carset-section {
+    @apply py-16 md:py-24;
+  }
+
+  .carset-heading {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide;
+  }
+
+  .carset-subheading {
+    @apply text-2xl md:text-3xl font-semibold tracking-wide;
+  }
+
+  .carset-card {
+    @apply bg-card rounded-lg overflow-hidden transition-all duration-300;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .carset-card:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-4px);
+  }
+
+  .carset-btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-sm uppercase tracking-wider transition-all duration-300;
+    background: var(--gradient-accent);
+    color: hsl(var(--accent-foreground));
+    box-shadow: var(--shadow-glow);
+  }
+
+  .carset-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px -10px hsla(0, 72%, 51%, 0.5);
+  }
+
+  .carset-btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300;
+    border-color: hsl(var(--foreground) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  .carset-btn-outline:hover {
+    border-color: hsl(var(--accent));
+    color: hsl(var(--accent));
+  }
+
+  .carset-divider {
+    @apply w-16 h-1 bg-accent;
+  }
+
+  .carset-text-gradient {
+    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 70%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
